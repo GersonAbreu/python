@@ -1,0 +1,45 @@
+import customtkinter as myApp #importando a biblioteca após o as "ctk" é o nome do programa podendo ser alterado
+
+janela = myApp.CTk()#Criar a janela principal
+
+janela.title("App Do Gerson")#nome da janela
+janela.geometry("700x400")
+janela.maxsize(width=900, height=550)#maximização da janela definição
+janela.minsize(width=500, height=300 )#minimiação da janela definida
+janela.resizable(width=False, height=False)#desabilita o redimensionamento onde estiver "False" pode ser habilitado
+
+janela._set_appearance_mode("escuro")
+
+#btn = myApp.CTkButton(janela, text="botão do Pix",width=200,height=100)
+#criação de botões na janela, é possível colocar texto e redimensionar e mudar de cor)
+#btn.pack()
+#btnEnviar = meuApp.CTkButton(janela,text="Enviar").pack()
+
+tabview = myApp.CTkTabview(janela, width=400,fg_color="teal",
+#fg cor cor da janela criada dentro da janela
+corner_radius=20, border_width=1, border_color="red",
+#corner radius É A MEDIDA DA CURVA , e border_width A ESPESSURA DA BORDA da janela criada, e border color a cor da borda,
+segmented_button_fg_color="orange", segmented_button_selected_hover_color="black",
+#segment button é linha atras dos botões,fg color a cor,segment button selecter hover color é o cor de quando o botão é selecionado
+segmented_button_unselected_color="green",
+#segmented buttoon unselecter color é o cor do botão quando não selecionado
+)
+
+tabview.pack()
+tabview.add('Nomes')
+tabview.add('Idades')
+tabview.add('Genero')
+tabview.tab('Nomes').grid_columnconfigure(0,weight=1)
+tabview.tab( 'Idades').grid_columnconfigure(0,weight=1)
+tabview.tab('Genero').grid_columnconfigure(0,weight=1)
+
+textNomes = myApp.CTkLabel(tabview.tab("Nomes"), text="Ana Clara\nGabi Arantes\nGiovana Gabriela\nGerson Abreu\nVagner Antunes\nRodrigo Silva\nPaulo Gustavo")
+textNomes.pack()
+
+textIdades = myApp.CTkLabel(tabview.tab("Idades"), text="18\n17\n17\n18\n25\n32\n25",)
+textIdades.pack()
+
+textGenero = myApp.CTkLabel(tabview.tab("Genero"),text="Feminino\nFeminino\nFeminino\nMasculino\nMasculino\nMasculino\nMasculino")
+textGenero.pack()
+
+janela.mainloop()#final da execução
